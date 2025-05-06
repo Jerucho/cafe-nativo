@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export const Banner = () => {
   const containerRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  // const { scrollY } = useScroll();
-  // const videoY = useTransform(scrollY, [0, 500], [0, -50]);
+  const { scrollY } = useScroll();
+  const textY = useTransform(scrollY, [0, 300], [0, -50]); // ajuste fino a gusto
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -37,7 +38,7 @@ export const Banner = () => {
     >
       {/* Fondo de video parallax */}
       <div
-        className="fixed inset-0 z-[-1] will-change-transform"
+        className="fixed inset-0 z-[-3] will-change-transform"
         aria-hidden="true"
       >
         <video
@@ -49,11 +50,14 @@ export const Banner = () => {
           playsInline
           preload="auto"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 z-[-2] bg-black/60" />
       </div>
 
       {/* Contenido del banner */}
-      <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center gap-6 px-4 text-center text-white">
+      <motion.div
+        style={{ y: textY }}
+        className="relative z-10 flex h-full flex-col items-center justify-center gap-6 px-4 text-center text-white will-change-transform"
+      >
         <h1 className="text-5xl font-bold sm:text-6xl">
           Despertá tus sentidos con cada taza
         </h1>
@@ -71,7 +75,7 @@ export const Banner = () => {
             Ver Menú
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Flecha animada */}
       <motion.div

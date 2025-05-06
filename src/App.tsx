@@ -7,7 +7,7 @@ function App() {
     <div className="font-display">
       <Navbar />
       <Banner />
-      <div className="z-10 bg-white">
+      <div className="z-20 bg-white">
         <OurHistory />
       </div>
       {/* Todos los elementos deben tener un fondo para que no aparezca el video del banner por detras */}
