@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  /* Colores base */
+  --color-bg: #ffffff; /* Fondo principal blanco */
+  --color-bg-alt: #f9f5f0; /* Alternativa cálida tipo beige */
+  --color-text: #2e2e2e; /* Texto principal */
+
+  /* Colores de marca */
+  --color-primary: #5c3a21; /* Marrón café tostado */
+  --color-secondary: #d4af37; /* Dorado acento */
+  --color-accent: #6b8e23; /* Verde oliva sutil */
+
+  /* Tonos neutros */
+  --color-muted: #a8a29e; /* Texto secundario, íconos apagados */
+  --color-border: #e2e2e2; /* Bordes suaves */
+
+  /* Colores para hover y efectos */
+  --color-hover: #4a2f1b; /* Versión más oscura del marrón */
+  --color-highlight: rgba(92, 58, 33, 0.1); /* Fondo suave para tarjetas */
+}
+
+@theme {
+  --font-display: "Poppins", sans-serif; /* Fuente principal */
+
+  --color-bannerBg: url("src/assets/banner-coffe.jpg"); /* Fondo del banner */
+
+  --color-bg: var(--color-bg); /* Fondo principal */
+  --color-bg-alt: var(--color-bg-alt); /* Alternativa cálida tipo beige */
+  --color-text: var(--color-text); /* Texto principal */
+  --color-primary: var(--color-primary); /* Marrón café tostado */
+  --color-secondary: var(--color-secondary); /* Dorado acento */
+  --color-accent: var(--color-accent); /* Verde oliva sutil */
+  --color-muted: var(--color-muted); /* Texto secundario, íconos apagados */
+  --color-border: var(--color-border); /* Bordes suaves */
+  --color-hover: var(--color-hover); /* Versión más oscura del marrón */
+  --color-highlight: var(--color-highlight); /* Fondo suave para tarjetas */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* Sombra suave */
+  --color-shadow-hover: rgba(0, 0, 0, 0.2); /* Sombra más intensa para hover */
+  --color-shadow-active: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Sombra más intensa para estado activo */
+  --color-border-hover: var(--color-border); /* Bordes suaves */
+}
+
+@layer utilities {
+  .container {
+    padding-inline: 10px; /* Por defecto para pantallas pequeñas */
+    margin-inline: auto;
+    max-width: 100%; /* Ocupa todo el ancho disponible */
+
+    @media (min-width: 640px) {
+      /* sm: */
+      padding-inline: 20px;
+    }
+
+    @media (min-width: 1024px) {
+      /* lg: */
+      padding-inline: 80px;
+    }
+
+    @media (min-width: 1280px) {
+      /* xl: */
+      padding-inline: 20px;
+    }
+  }
+}
