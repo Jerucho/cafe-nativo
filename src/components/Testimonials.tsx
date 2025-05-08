@@ -43,7 +43,7 @@ export const Testimonials = () => {
     }
   }, [emblaApi]);
   return (
-    <div className="w-100% container">
+    <div className="w-100% container bg-white p-5">
       <div className="flex w-full flex-col gap-10 p-5 shadow-lg">
         <Title title="Nuestros Clientes" description="Porque nos eligen" />
         <div

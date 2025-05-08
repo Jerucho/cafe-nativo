@@ -38,8 +38,7 @@ export const Menu = () => {
   return (
     <>
       <div className="container flex h-auto min-h-screen flex-col justify-center gap-10 bg-bg-alt p-4">
-        <Title title="Nuestro Menú" description="" />
-        <h2 className="text-center text-2xl font-medium text-primary">Cafés</h2>
+        <Title title="Menú" description="Cafés" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {coffees.map((product, index) => (
             <ProductCard
