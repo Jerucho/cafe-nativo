@@ -44,7 +44,7 @@ export const Testimonials = () => {
   }, [emblaApi]);
   return (
     <div className="w-100% container bg-white p-5">
-      <div className="flex w-full flex-col gap-10 p-5 shadow-lg">
+      <div className="flex w-full flex-col gap-10 rounded-xl p-5 shadow-sm">
         <Title title="Nuestros Clientes" description="Porque nos eligen" />
         <div
           className="mx-auto w-full max-w-3xl overflow-hidden"
@@ -54,7 +54,7 @@ export const Testimonials = () => {
             {testimonials.map((testimonial, i) => (
               <div key={i} className="flex-[0_0_100%] px-4">
                 <div
-                  className={`text-muted-foreground flex h-[300px] flex-col items-center justify-center gap-4 rounded-xl p-5 shadow-xl`}
+                  className={`text-muted-foreground flex h-[300px] flex-col items-center justify-center gap-4 rounded-xl border border-muted/20 p-5`}
                 >
                   <Quote className="h-12 w-12 text-muted" />
                   <p className="px-6 text-center">{testimonial.quote}</p>
