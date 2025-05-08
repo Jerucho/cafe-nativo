@@ -41,6 +41,7 @@ export const Gallery = () => {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { scrollYProgress } = useScroll();
   const imageY = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,11 +67,20 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="container flex h-auto min-h-screen flex-col gap-10 p-4">
-        <Title title="Galería" description="Grábate en el momento" />
+    <motion.div
+      className="flex min-h-screen flex-col items-center justify-center gap-10 py-20"
+      style={{ opacity }}
+    >
+      <div className="container flex flex-col gap-10 p-4">
         <motion.div
-          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Title title="Galería" description="Grábate en el momento" />
+        </motion.div>
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           style={{ y: imageY }}
         >
           {gallery.map((item) => (
@@ -80,13 +90,13 @@ export const Gallery = () => {
                 imageRefs.current[item.id] = el;
               }}
               data-id={item.id}
-              className="relative aspect-square overflow-hidden rounded-lg bg-gray-200"
+              className="group relative aspect-square overflow-hidden rounded-xl bg-gray-200 shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               {visibleImages.includes(item.id) && (
                 <motion.img
                   src={item.image}
                   alt="Gallery"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   initial={{ scale: 1.2, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{
@@ -97,17 +107,23 @@ export const Gallery = () => {
                   style={{ transformOrigin: "center" }}
                 />
               )}
+              <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           ))}
         </motion.div>
       </div>
-      <a
+      <motion.a
         href="https://www.instagram.com/cafecafecafe/"
-        className="mx-auto flex items-center justify-center rounded-md border border-primary px-6 py-3 text-center text-lg text-primary transition-colors duration-200 hover:bg-primary hover:text-white"
+        className="group relative mx-auto flex items-center justify-center gap-2 overflow-hidden rounded-full border-2 border-primary px-8 py-4 text-center text-lg font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <Instagram className="mr-2 h-6 w-6" />
-        Seguinos en Instagram
-      </a>
-    </div>
+        <Instagram className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12" />
+        <span>Seguinos en Instagram</span>
+      </motion.a>
+    </motion.div>
   );
 };
