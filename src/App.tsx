@@ -5,6 +5,7 @@ import { OurHistory } from "./components/OurHistory/OurHistory";
 import { Testimonials } from "./components/Testimonials";
 import { Gallery } from "./components/Gallery";
 import { LastBanner } from "./components/LastBanner";
+import { Footer } from "./components/Footer";
 function App() {
   return (
     <div className="font-display">
@@ -17,6 +18,7 @@ function App() {
         <Gallery />
       </div>
       <LastBanner />
+      <Footer />
       {/* Todos los elementos deben tener un fondo para que no aparezca el video del banner por detras */}
     </div>
   );
