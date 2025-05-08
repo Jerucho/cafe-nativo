@@ -3,7 +3,7 @@ import { Menu } from "./components/Menu";
 import { Navbar } from "./components/Navbar";
 import { OurHistory } from "./components/OurHistory/OurHistory";
 import { Testimonials } from "./components/Testimonials";
-
+import { Gallery } from "./components/Gallery";
 function App() {
   return (
     <div className="font-display">
@@ -13,6 +13,7 @@ function App() {
         <OurHistory />
         <Menu />
         <Testimonials />
+        <Gallery />
       </div>
       {/* Todos los elementos deben tener un fondo para que no aparezca el video del banner por detras */}
     </div>
