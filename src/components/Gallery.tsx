@@ -36,7 +36,11 @@ const gallery = [
   },
 ];
 
-export const Gallery = () => {
+export const Gallery = ({
+  ref: galeriaRef,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}) => {
   const [visibleImages, setVisibleImages] = useState<number[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { scrollYProgress } = useScroll();
@@ -67,7 +71,8 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <motion.div
+    <motion.section
+      ref={galeriaRef}
       className="flex min-h-screen flex-col items-center justify-center gap-10 py-20"
       style={{ opacity }}
     >
@@ -124,6 +129,6 @@ export const Gallery = () => {
         <Instagram className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12" />
         <span>Seguinos en Instagram</span>
       </motion.a>
-    </motion.div>
+    </motion.section>
   );
 };

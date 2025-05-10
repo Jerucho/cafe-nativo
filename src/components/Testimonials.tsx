@@ -27,7 +27,11 @@ const testimonials = [
   },
 ];
 
-export const Testimonials = () => {
+export const Testimonials = ({
+  ref: testimonialsRef,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -43,7 +47,10 @@ export const Testimonials = () => {
     }
   }, [emblaApi]);
   return (
-    <div className="w-100% container bg-white p-5">
+    <section
+      ref={testimonialsRef}
+      className="w-100% container bg-white p-5 pt-20"
+    >
       <div className="flex w-full flex-col gap-10 rounded-xl p-5 shadow-sm">
         <Title title="Nuestros Clientes" description="Porque nos eligen" />
         <div
@@ -89,6 +96,6 @@ export const Testimonials = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

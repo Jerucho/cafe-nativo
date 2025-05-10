@@ -48,7 +48,7 @@
 
 @layer utilities {
   .container {
-    padding-inline: 10px; /* Por defecto para pantallas pequeñas */
+    padding-inline: 30px; /* Por defecto para pantallas pequeñas */
     margin-inline: auto;
     max-width: 100%; /* Ocupa todo el ancho disponible */
 

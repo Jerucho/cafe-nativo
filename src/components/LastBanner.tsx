@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
 
-export const LastBanner = () => {
+export const LastBanner = ({
+  ref: contactoRef,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}) => {
   return (
-    <section className="relative w-full">
+    <section ref={contactoRef} className="relative w-full">
       <div className="relative h-[600px] w-full bg-[url('https://buenazo.cronosmedia.glr.pe/original/2024/08/22/66c7c58d2d7a032cea207d04.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
         <div className="absolute inset-0 bg-black/70"></div>
 

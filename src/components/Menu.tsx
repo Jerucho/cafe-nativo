@@ -1,3 +1,4 @@
+import { RefObject } from "react";
 import { ProductCard } from "./ProductCard";
 import { Title } from "./Title";
 
@@ -34,23 +35,28 @@ const coffees = [
   },
 ];
 
-export const Menu = () => {
+export const Menu = ({
+  ref: menuRef,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}) => {
   return (
-    <>
-      <div className="container flex h-auto min-h-screen flex-col justify-center gap-10 bg-bg-alt p-4">
-        <Title title="Menú" description="Cafés" />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-          {coffees.map((product, index) => (
-            <ProductCard
-              key={index}
-              product_name={product.product_name}
-              product_price={product.product_price}
-              product_image={product.product_image}
-              product_description={product.product_description}
-            />
-          ))}
-        </div>
+    <section
+      ref={menuRef}
+      className="container flex h-auto min-h-screen flex-col justify-center gap-10 bg-bg-alt p-4 pt-20"
+    >
+      <Title title="Menú" description="Cafés" />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        {coffees.map((product, index) => (
+          <ProductCard
+            key={index}
+            product_name={product.product_name}
+            product_price={product.product_price}
+            product_image={product.product_image}
+            product_description={product.product_description}
+          />
+        ))}
       </div>
-    </>
+    </section>
   );
 };

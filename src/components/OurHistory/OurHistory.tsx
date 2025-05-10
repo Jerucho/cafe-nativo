@@ -21,9 +21,16 @@ const features = [
   },
 ];
 
-export const OurHistory = () => {
+export const OurHistory = ({
+  ref: ourHistoryRef,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}) => {
   return (
-    <section className="container bg-white px-6 py-20 md:px-10">
+    <section
+      ref={ourHistoryRef}
+      className="container bg-white px-6 py-20 md:px-10"
+    >
       <Title
         title="Nuestra Historia."
         description="Conocé nuestra historia y descubrí la esencia de nuestro café."
