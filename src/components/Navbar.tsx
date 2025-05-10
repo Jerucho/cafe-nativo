@@ -1,5 +1,5 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Coffee, Menu, X } from "lucide-react";
 import { useState, useEffect, RefObject } from "react";
 
 interface NavbarProps {
@@ -81,11 +81,12 @@ export const Navbar = ({ refs }: NavbarProps) => {
     >
       <header className="container flex h-16 w-full items-center justify-between">
         <motion.h2
+          className="flex items-center justify-center gap-2 text-2xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Logo
+          <Coffee className="h-6 w-6 font-bold" /> Café Nativo
         </motion.h2>
 
         {/* Desktop Menu */}
