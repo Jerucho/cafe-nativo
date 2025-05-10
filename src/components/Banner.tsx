@@ -5,7 +5,11 @@ export const Banner = () => {
   const containerRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollY } = useScroll();
-  const textY = useTransform(scrollY, [0, 300], [0, -50]); // ajuste fino a gusto
+
+  // Transformaciones para el efecto parallax
+  const videoY = useTransform(scrollY, [0, 1000], [0, 200]);
+  const textY = useTransform(scrollY, [0, 1000], [0, -200]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,16 +32,17 @@ export const Banner = () => {
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, []); // Asegúrate de que solo se ejecute una vez
+  }, []);
 
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden border"
+      className="relative h-screen w-full overflow-hidden"
       aria-label="Banner principal"
     >
       {/* Fondo de video parallax */}
-      <div
+      <motion.div
+        // style={{ y: videoY }}
         className="fixed inset-0 z-[-3] will-change-transform"
         aria-hidden="true"
       >
@@ -50,23 +55,38 @@ export const Banner = () => {
           playsInline
           preload="auto"
         />
-        <div className="absolute inset-0 z-[-2] bg-black/60" />
-      </div>
+        <div className="absolute inset-0 z-[-4] bg-black/80" />
+      </motion.div>
 
       {/* Contenido del banner */}
       <motion.div
-        style={{ y: textY }}
+        style={{ y: textY, opacity }}
         className="relative z-10 flex h-full flex-col items-center justify-center gap-6 px-4 text-center text-white will-change-transform"
       >
-        <h1 className="text-5xl font-bold sm:text-6xl">
+        <motion.h1
+          className="text-5xl font-bold sm:text-6xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           Despertá tus sentidos con cada taza
-        </h1>
-        <p className="max-w-2xl text-lg font-light sm:text-xl">
+        </motion.h1>
+        <motion.p
+          className="max-w-2xl text-lg font-light sm:text-xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           Café de especialidad tostado artesanalmente, con sabores únicos que
           cuentan historias
-        </p>
+        </motion.p>
 
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+        <motion.div
+          className="mt-4 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <button className="rounded bg-secondary px-6 py-2 text-lg text-white transition-all duration-300 hover:bg-primary focus:ring-2 focus:ring-white focus:outline-none">
             Reservar
           </button>
@@ -74,7 +94,7 @@ export const Banner = () => {
           <button className="rounded border border-white bg-transparent px-6 py-2 text-lg text-white transition-colors duration-300 hover:bg-white hover:text-black focus:ring-2 focus:ring-white focus:outline-none">
             Ver Menú
           </button>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Flecha animada */}
