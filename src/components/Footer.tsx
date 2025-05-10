@@ -3,14 +3,14 @@ import { Instagram, Facebook, Mail } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="w-full bg-zinc-900 text-zinc-200">
+    <footer className="w-full max-w-full overflow-hidden bg-zinc-900 text-zinc-200">
       <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 py-10 md:flex-row">
         {/* Logo o Nombre */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-lg font-semibold text-white"
+          className="overflow-hidden text-lg font-semibold text-white"
         >
           Café Nativo
         </motion.div>
@@ -20,7 +20,7 @@ export const Footer = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex gap-4"
+          className="flex gap-4 overflow-hidden"
         >
           <a
             href="https://instagram.com"
@@ -54,7 +54,7 @@ export const Footer = () => {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-sm text-zinc-400"
+          className="overflow-hidden text-center text-sm text-zinc-400 md:text-left"
         >
           © {new Date().getFullYear()} Café Nativo — Todos los derechos
           reservados
