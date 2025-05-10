@@ -6,8 +6,6 @@ export const Banner = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollY } = useScroll();
 
-  // Transformaciones para el efecto parallax
-  const videoY = useTransform(scrollY, [0, 1000], [0, 200]);
   const textY = useTransform(scrollY, [0, 1000], [0, -200]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 

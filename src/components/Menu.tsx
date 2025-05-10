@@ -1,4 +1,3 @@
-import { RefObject } from "react";
 import { ProductCard } from "./ProductCard";
 import { Title } from "./Title";
 

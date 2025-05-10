@@ -17,9 +17,11 @@ export const Navbar = ({ refs }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const scrollTo = (ref: RefObject<HTMLElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false); // cerrar menú mobile después del click
+  const scrollTo = (ref: RefObject<HTMLElement | null>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
+    }
   };
 
   useEffect(() => {

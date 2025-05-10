@@ -7,12 +7,13 @@ import { Gallery } from "./components/Gallery";
 import { LastBanner } from "./components/LastBanner";
 import { Footer } from "./components/Footer";
 import { useRef } from "react";
+
 function App() {
-  const ourHistoryRef = useRef<HTMLElement | null>(null);
-  const menuRef = useRef<HTMLElement | null>(null);
-  const testimoniosRef = useRef<HTMLElement | null>(null);
-  const galeriaRef = useRef<HTMLElement | null>(null);
-  const contactoRef = useRef<HTMLElement | null>(null);
+  const ourHistoryRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+  const testimoniosRef = useRef<HTMLElement>(null);
+  const galeriaRef = useRef<HTMLElement>(null);
+  const contactoRef = useRef<HTMLElement>(null);
 
   return (
     <div className="font-display">
